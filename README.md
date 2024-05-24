@@ -18,13 +18,13 @@ This Angular pakage features a dynamic table that displays any responce data wit
 ## Install
 
 ```
-npm install dynamic-list
+npm install dynamic-list-page
 ```
 
 ## Call in module file
 
 ```js
-import { DynamicListModule } from 'dynamic-list';
+import { DynamicListModule } from 'dynamic-list-page';
 
 
 //import in module imports section like :
