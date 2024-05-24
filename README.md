@@ -18,7 +18,7 @@ This Angular pakage features a dynamic table that displays any responce data wit
 ## Install
 
 ```
-
+npm install dynamic-list
 ```
 
 ## Call in module file

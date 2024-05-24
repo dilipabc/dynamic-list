@@ -21,5 +21,28 @@
       "esm": "./esm2022/dynamic-list.mjs",
       "default": "./fesm2022/dynamic-list.mjs"
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dilipabc/ga4-analytics-report"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "keywords": [
+    "list",
+    "dynamic",
+    "report",
+    "table",
+    "table list",
+    "page",
+    "list page",
+    "angular"
+  ],
+  "author": "dilipabc <dilipabc@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dilipabc/ga4-analytics-report/issues"
+  },
+  "homepage": "https://github.com/dilipabc/ga4-analytics-report#readme"
 }
