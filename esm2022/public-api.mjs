@@ -1,0 +1,7 @@
+/*
+ * Public API Surface of dynamic-list
+ */
+export * from './lib/dynamic-list.service';
+export * from './lib/dynamic-list.component';
+export * from './lib/dynamic-list.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL2R5bmFtaWMtbGlzdC9zcmMvcHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUVILGNBQWMsNEJBQTRCLENBQUM7QUFDM0MsY0FBYyw4QkFBOEIsQ0FBQztBQUM3QyxjQUFjLDJCQUEyQixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLypcbiAqIFB1YmxpYyBBUEkgU3VyZmFjZSBvZiBkeW5hbWljLWxpc3RcbiAqL1xuXG5leHBvcnQgKiBmcm9tICcuL2xpYi9keW5hbWljLWxpc3Quc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9keW5hbWljLWxpc3QuY29tcG9uZW50JztcbmV4cG9ydCAqIGZyb20gJy4vbGliL2R5bmFtaWMtbGlzdC5tb2R1bGUnO1xuIl19
