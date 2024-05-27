@@ -74,24 +74,27 @@ title = 'My List Page Title';
   ];
 
 //Action menu defined
-  actionMenus = [
+   actionMenus = [
     {
       name: 'View',
-      ridirectUrl: '/view/',
+      redirectUrl: '/view/',
       isConfirm: false,
-      fieldName: '_id'
+      fieldName: '_id',
+      iconUrl: ''
     },
     {
       name: 'Edit',
-      ridirectUrl: '/add/',
+      redirectUrl: '/add/',
       isConfirm: false,
-      fieldName: '_id'
+      fieldName: '_id',
+      iconUrl: ''
     },
     {
       name: 'Delete',
-      ridirectUrl: '',
+      redirectUrl: '',
       isConfirm: true,
-      fieldName: '_id'
+      fieldName: '_id',
+      iconUrl: ''
     }
   ];
   //Enable Disable Function As per your requirement

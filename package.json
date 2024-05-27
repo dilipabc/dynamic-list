@@ -1,6 +1,6 @@
 {
   "name": "dynamic-list-page",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This Angular package features a robust and dynamic table component designed to display any response data efficiently. It integrates essential functionalities including pagination, sorting, and CRUD (Create, Read, Update, Delete) actions to enhance user experience and data management.",
   "peerDependencies": {
     "@angular/common": "^16.2.0",

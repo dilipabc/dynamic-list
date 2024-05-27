@@ -3,9 +3,10 @@ export interface DynamicKeyInterface {
 }
 export interface ActionMenus {
     name: string;
-    ridirectUrl: string;
+    redirectUrl: string;
     isConfirm: boolean;
     fieldName?: string;
+    iconUrl?: string;
 }
 export interface ItemTitles {
     key: string;

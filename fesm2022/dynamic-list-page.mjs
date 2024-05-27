@@ -303,16 +303,26 @@ class DynamicListComponent {
                                       <a class="nav-link" href="javascript:void(0);"
                                           (click)="deleteItems(returnDeleteItemsId(item, actionMenu.fieldName))"
                                           title=" {{actionMenu.name}}">
-                                          {{actionMenu.name}}
+                                          <ng-container *ngIf="actionMenu.iconUrl">
+                                          <img src="{{actionMenu.iconUrl}}" width="50px" height="50px" alt="{{actionMenu.name}}"/>
+                                          </ng-container>
+                                          <ng-container  *ngIf="actionMenu.iconUrl == ''" >
+                                            {{actionMenu.name}}
+                                          </ng-container>
                                       </a>
                                   </ng-container>
 
                                   <ng-container *ngIf="actionMenu.isConfirm == false">
-
                                       <a class="nav-link" href="javascript:void(0);"
-                                          routerLink="{{actionMenu.ridirectUrl}}{{returnDeleteItemsId(item, actionMenu.fieldName)}}"
+                                          routerLink="{{actionMenu.redirectUrl}}{{returnDeleteItemsId(item, actionMenu.fieldName)}}"
                                           title=" {{actionMenu.name}}">
-                                          {{actionMenu.name}}
+                                          <ng-container *ngIf="actionMenu.iconUrl">
+                                          <img src="{{actionMenu.iconUrl}}" width="50px" height="50px" alt="{{actionMenu.name}}"/>
+                                          </ng-container>
+                                          <ng-container  *ngIf="actionMenu.iconUrl == ''" >
+                                            {{actionMenu.name}}
+                                          </ng-container>
+
                                       </a>
                                   </ng-container>
                               </ng-container>
@@ -411,16 +421,26 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImpo
                                       <a class="nav-link" href="javascript:void(0);"
                                           (click)="deleteItems(returnDeleteItemsId(item, actionMenu.fieldName))"
                                           title=" {{actionMenu.name}}">
-                                          {{actionMenu.name}}
+                                          <ng-container *ngIf="actionMenu.iconUrl">
+                                          <img src="{{actionMenu.iconUrl}}" width="50px" height="50px" alt="{{actionMenu.name}}"/>
+                                          </ng-container>
+                                          <ng-container  *ngIf="actionMenu.iconUrl == ''" >
+                                            {{actionMenu.name}}
+                                          </ng-container>
                                       </a>
                                   </ng-container>
 
                                   <ng-container *ngIf="actionMenu.isConfirm == false">
-
                                       <a class="nav-link" href="javascript:void(0);"
-                                          routerLink="{{actionMenu.ridirectUrl}}{{returnDeleteItemsId(item, actionMenu.fieldName)}}"
+                                          routerLink="{{actionMenu.redirectUrl}}{{returnDeleteItemsId(item, actionMenu.fieldName)}}"
                                           title=" {{actionMenu.name}}">
-                                          {{actionMenu.name}}
+                                          <ng-container *ngIf="actionMenu.iconUrl">
+                                          <img src="{{actionMenu.iconUrl}}" width="50px" height="50px" alt="{{actionMenu.name}}"/>
+                                          </ng-container>
+                                          <ng-container  *ngIf="actionMenu.iconUrl == ''" >
+                                            {{actionMenu.name}}
+                                          </ng-container>
+
                                       </a>
                                   </ng-container>
                               </ng-container>
