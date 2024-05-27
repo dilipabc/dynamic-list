@@ -1,18 +1,15 @@
-# dynamic-list
+# dynamic-list-page
 
 This Angular package features a robust and dynamic table component designed to display any response data efficiently. It integrates essential functionalities including pagination, sorting, and CRUD (Create, Read, Update, Delete) actions to enhance user experience and data management.
 
+## Uses
 
-## Features
+To import and use a module from a package named dynamic-list-page in your Angular project, you need to follow these steps:
 
-This Angular pakage features a dynamic table that displays any responce data with the following functionalities:
+    - Install the Package: Ensure the package is installed in your project.
+    - Import the Module: Import the DynamicListModule in your Angular module file.
+    - Use the Module: Utilize the components, directives, or services provided by the module in your application.
 
-- Pagination: Allows users to navigate through pages of data.
-- Sorting: Enables sorting of table columns in ascending or descending order.
-- CRUD Actions:
-   - Edit its redirect to your edit page.
-   - View: its redirect to your view page.
-   - Delete: its call your delete function with event emitter.
 
 
 ## Install
@@ -21,30 +18,53 @@ This Angular pakage features a dynamic table that displays any responce data wit
 npm install dynamic-list-page
 ```
 
-## Call in module file
+## Example: Dynamic List Component with Pagination, Sorting, and Actions
+
+Here's a more detailed example assuming the dynamic-list-page provides a DynamicListComponent that handles pagination, sorting, and CRUD actions.
+
+
+## Import the Module app.module.ts
 
 ```js
-import { DynamicListModule } from 'dynamic-list-page';
 
-
-//import in module imports section like :
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { DynamicListModule } from 'dynamic-list-page'; // Import the module here
 
 @NgModule({
-  declarations: [],
-  imports: [DynamicListModule],
+  declarations: [ 
+    AppComponent,
+    // other components
+  ],
+  imports: [
+    BrowserModule,
+    DynamicListModule, // Include the module here
+    // other modules
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
+export class AppModule { }
+
 
 
 ```
 
-## Call in component file
+## app.component.ts (Optional)
+
+If you need to pass any data or configuration to the DynamicListComponent, you can use Angular's input bindings. For example:
 
 ```js
 
+// Define any properties you need to pass to the dynamic list component
+
+
+//Page Title
 title = 'My List Page Title';
 
+
+// Table headers and Search defined
   itemsTitles = [
     { key: "user_id", value: "User Id", isSearch: true },
     { key: "name", value: "Name", isSearch: true },
@@ -53,6 +73,7 @@ title = 'My List Page Title';
     { key: "email", value: "Email", isSearch: true }
   ];
 
+//Action menu defined
   actionMenus = [
     {
       name: 'View',
@@ -73,15 +94,15 @@ title = 'My List Page Title';
       fieldName: '_id'
     }
   ];
-
+//data pass for listing
   myListData: any = [];
-
+// Pagination control items
   paginationItems = {
     currentPage: 1,
     itemsPerPage: 10,
     totalPages: 0
   }
-
+// Sorting control items
   sortingVal = {
     sort: '',
     sort_order: '',
@@ -98,7 +119,7 @@ title = 'My List Page Title';
     this.getAllData();
   }
 
-
+  //Data received from service api
   getAllData() {
 
     let options = {
@@ -119,49 +140,49 @@ title = 'My List Page Title';
   }
 
 
-
+  //Item Delete function
   pageItemDelete(del_id: any) {
     console.log(del_id)
   }
-
-  onGoTo(pageNo: any) {
-    this.paginationItems.currentPage = pageNo;
-    this.getAllData();
-  }
-
-  onNext(pageNo: any) {
-    this.paginationItems.currentPage = this.paginationItems.currentPage + 1;
-    this.getAllData();
-  }
-
-
-  onPrev(pageNo: any) {
-    this.paginationItems.currentPage = this.paginationItems.currentPage - 1;
-    this.getAllData();
-  }
-
+  // Sorting function
   sorting(sortOptions: any) {
     this.sortingVal.sort = sortOptions.sortKey;
     this.sortingVal.sort_order = sortOptions.sortDirection == false ? 'asc' : 'desc';
     this.getAllData();
   }
-
+  //Searching function
   search(searchOpt:any){
     this.searchVal.searchBy = searchOpt.searchBy;
     this.searchVal.searchTerm = searchOpt.searchTerm;    
     this.getAllData();
   }
-
+  //search form reset
   reset(searchOpt:any){
     this.searchVal.searchBy = searchOpt.searchBy;
     this.searchVal.searchTerm = searchOpt.searchTerm;    
+    this.getAllData();
+  }
+  // Pagination function for no
+  onGoTo(pageNo: any) {
+    this.paginationItems.currentPage = pageNo;
+    this.getAllData();
+  }
+  // Pagination function for next button
+  onNext(pageNo: any) {
+    this.paginationItems.currentPage = this.paginationItems.currentPage + 1;
+    this.getAllData();
+  }
+
+   // Pagination function for prev button
+  onPrev(pageNo: any) {
+    this.paginationItems.currentPage = this.paginationItems.currentPage - 1;
     this.getAllData();
   }
 
 
 ```
 
-## Call in html tamplate
+## app.component.html (With Input Bindings)
 
 ```html
 <lib-dynamic-list 
@@ -179,6 +200,25 @@ title = 'My List Page Title';
 (toReset)="reset($event)">
 </lib-dynamic-list>
 ```
+
+## Summary
+
+By following these steps, you can import and use the DynamicListModule from the dynamic-list-page package in your Angular application. Ensure you check the documentation of the package for specific details on the components, directives, or services it provides and how to use them effectively.
+
+
+![Logo](https://rccbltd.co.in/assets/frontend/images/1.png)
+
+
+## Features
+
+This Angular pakage features a dynamic table that displays any responce data with the following functionalities:
+
+- Pagination: Allows users to navigate through pages of data.
+- Sorting: Enables sorting of table columns in ascending or descending order.
+- CRUD Actions:
+   - Edit its redirect to your edit page.
+   - View: its redirect to your view page.
+   - Delete: its call your delete function with event emitter.
 
 
 ## license
