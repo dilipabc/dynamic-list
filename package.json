@@ -1,18 +1,16 @@
 {
   "name": "dynamic-list-page",
-  "version": "1.0.2",
-  "description":"This Angular package features a robust and dynamic table component designed to display any response data efficiently. It integrates essential functionalities including pagination, sorting, and CRUD (Create, Read, Update, Delete) actions to enhance user experience and data management.",
+  "version": "1.0.3",
+  "description": "This Angular package features a robust and dynamic table component designed to display any response data efficiently. It integrates essential functionalities including pagination, sorting, and CRUD (Create, Read, Update, Delete) actions to enhance user experience and data management.",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
     "@angular/core": "^16.2.0"
   },
   "dependencies": {
-    "tslib": "^2.3.0",    
-    "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3"    
+    "tslib": "^2.3.0"
   },
   "sideEffects": false,
-  "module": "fesm2022/dynamic-list.mjs",
+  "module": "fesm2022/dynamic-list-page.mjs",
   "typings": "index.d.ts",
   "exports": {
     "./package.json": {
@@ -20,14 +18,14 @@
     },
     ".": {
       "types": "./index.d.ts",
-      "esm2022": "./esm2022/dynamic-list.mjs",
-      "esm": "./esm2022/dynamic-list.mjs",
-      "default": "./fesm2022/dynamic-list.mjs"
+      "esm2022": "./esm2022/dynamic-list-page.mjs",
+      "esm": "./esm2022/dynamic-list-page.mjs",
+      "default": "./fesm2022/dynamic-list-page.mjs"
     }
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dilipabc/ga4-analytics-report"
+    "url": "https://github.com/dilipabc/dynamic-list"
   },
   "engines": {
     "node": ">=14"
@@ -45,7 +43,7 @@
   "author": "dilipabc <dilipabc@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dilipabc/ga4-analytics-report/issues"
+    "url": "https://github.com/dilipabc/dynamic-list/issues"
   },
-  "homepage": "https://github.com/dilipabc/ga4-analytics-report#readme"
+  "homepage": "https://github.com/dilipabc/dynamic-list#readme"
 }
