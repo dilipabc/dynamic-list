@@ -1,6 +1,6 @@
 import { OnInit, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { DynamicKeyInterface, ActionMenus, ItemTitles, PaginationItems } from './dataType';
+import { DynamicKeyInterface, ActionMenus, ItemTitles, PaginationItems, FunctionEnable } from './dataType';
 import * as i0 from "@angular/core";
 export declare class DynamicListComponent implements OnInit, OnChanges {
     private fb;
@@ -9,6 +9,7 @@ export declare class DynamicListComponent implements OnInit, OnChanges {
     paginationItems: PaginationItems | any;
     actionMenus: Array<ActionMenus>;
     items: Array<DynamicKeyInterface>;
+    funEnable: Array<FunctionEnable>;
     onGoPage: EventEmitter<number>;
     next: EventEmitter<number>;
     prev: EventEmitter<number>;
@@ -38,5 +39,5 @@ export declare class DynamicListComponent implements OnInit, OnChanges {
     returnDeleteItemsId(item: any, key: any): any;
     printTdValues(item: any, key: string): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<DynamicListComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DynamicListComponent, "lib-dynamic-list", never, { "title": { "alias": "title"; "required": false; }; "itemTitles": { "alias": "itemTitles"; "required": false; }; "paginationItems": { "alias": "paginationItems"; "required": false; }; "actionMenus": { "alias": "actionMenus"; "required": false; }; "items": { "alias": "items"; "required": false; }; }, { "onGoPage": "onGoPage"; "next": "next"; "prev": "prev"; "toDel": "toDel"; "toSort": "toSort"; "toSearch": "toSearch"; "toReset": "toReset"; }, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DynamicListComponent, "lib-dynamic-list", never, { "title": { "alias": "title"; "required": false; }; "itemTitles": { "alias": "itemTitles"; "required": false; }; "paginationItems": { "alias": "paginationItems"; "required": false; }; "actionMenus": { "alias": "actionMenus"; "required": false; }; "items": { "alias": "items"; "required": false; }; "funEnable": { "alias": "funEnable"; "required": false; }; }, { "onGoPage": "onGoPage"; "next": "next"; "prev": "prev"; "toDel": "toDel"; "toSort": "toSort"; "toSearch": "toSearch"; "toReset": "toReset"; }, never, never, false, never>;
 }

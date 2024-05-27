@@ -94,6 +94,13 @@ title = 'My List Page Title';
       fieldName: '_id'
     }
   ];
+  //Enable Disable Function As per your requirement
+  functionEnable = [{
+    pagination: true,
+    sorting: true, 
+    searching: true
+  }];
+
 //data pass for listing
   myListData: any = [];
 // Pagination control items
@@ -188,6 +195,7 @@ title = 'My List Page Title';
 <lib-dynamic-list 
 [title]="title" 
 [itemTitles]="itemsTitles" 
+[funEnable]="functionEnable"
 [items]="myListData" 
 [actionMenus]="actionMenus" 
 [paginationItems]="paginationItems" 

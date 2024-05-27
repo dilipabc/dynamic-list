@@ -17,3 +17,8 @@ export interface PaginationItems {
     itemsPerPage: number;
     totalPages: number;
 }
+export interface FunctionEnable {
+    pagination: boolean;
+    sorting: boolean;
+    searching: boolean;
+}

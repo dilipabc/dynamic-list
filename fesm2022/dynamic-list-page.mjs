@@ -127,6 +127,7 @@ class DynamicListComponent {
         this.itemTitles = [];
         this.actionMenus = [];
         this.items = [];
+        this.funEnable = [];
         this.onGoPage = new EventEmitter();
         this.next = new EventEmitter();
         this.prev = new EventEmitter();
@@ -205,7 +206,15 @@ class DynamicListComponent {
             const myArray = key.split(".");
             let result = Array.isArray(item[myArray[0]]);
             if (result == true) {
-                return item[myArray[0]][0][myArray[1]];
+                if (myArray.length == 2) {
+                    return item[myArray[0]][0][myArray[1]];
+                }
+                else if (myArray.length == 3) {
+                    return item[myArray[0]][0][myArray[1]][myArray[2]];
+                }
+                else if (myArray.length == 4) {
+                    return item[myArray[0]][0][myArray[1]][myArray[2]][myArray[3]];
+                }
             }
             else {
                 if (myArray.length == 2) {
@@ -221,53 +230,64 @@ class DynamicListComponent {
         }
     }
     static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: DynamicListComponent, deps: [{ token: i1$1.FormBuilder }], target: i0.ɵɵFactoryTarget.Component }); }
-    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.2.12", type: DynamicListComponent, selector: "lib-dynamic-list", inputs: { title: "title", itemTitles: "itemTitles", paginationItems: "paginationItems", actionMenus: "actionMenus", items: "items" }, outputs: { onGoPage: "onGoPage", next: "next", prev: "prev", toDel: "toDel", toSort: "toSort", toSearch: "toSearch", toReset: "toReset" }, usesOnChanges: true, ngImport: i0, template: `
+    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.2.12", type: DynamicListComponent, selector: "lib-dynamic-list", inputs: { title: "title", itemTitles: "itemTitles", paginationItems: "paginationItems", actionMenus: "actionMenus", items: "items", funEnable: "funEnable" }, outputs: { onGoPage: "onGoPage", next: "next", prev: "prev", toDel: "toDel", toSort: "toSort", toSearch: "toSearch", toReset: "toReset" }, usesOnChanges: true, ngImport: i0, template: `
     <div>
       <h2 class="mb-4">{{title}}</h2>
-      <form [formGroup]="searchForm" (ngSubmit)="search()">
-        <div class="row m-2">
-            <div class="col-lg-3">
-                <div class="input-group">
-                    <label for="searchBy" class="input-group-addon mt-1 m-1" >Search By : </label>
-                    <select id="searchBy" formControlName="searchBy" class="form-control">
-                        <option value="">Select</option>
-                        <ng-container *ngFor="let itemTitle of itemTitles">
-                          <option *ngIf="itemTitle.isSearch == true"  value="{{itemTitle.key}}">{{itemTitle.value}}</option>
-                        </ng-container>                        
-                    </select>
-                    <div class="validation" *ngIf="searchBy?.invalid && (searchBy?.dirty || searchBy?.touched)">
-                        <small *ngIf="searchBy?.errors?.['required']">Search by is required.</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="input-group">
-                    <label for="searchTerm" class="input-group-addon mt-1 m-1">Search Key : </label>
-                    <input id="searchTerm" formControlName="searchTerm" placeholder="Search" class="form-control"/>
-                    <div class="validation" *ngIf="searchTerm?.invalid && (searchTerm?.dirty || searchTerm?.touched)">
-                        <small *ngIf="searchTerm?.errors?.['required']">Search key is required.</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="form-group mt-1">
-                    <button type="submit" class="btn btn-primary" [disabled]="searchForm.invalid">Search</button>
-                    &nbsp;&nbsp;
-                    <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>
+      <ng-container *ngIf="funEnable[0].searching == true">
+        <form [formGroup]="searchForm" (ngSubmit)="search()">
+          <div class="row m-2">
+              <div class="col-lg-3">
+                  <div class="input-group">
+                      <label for="searchBy" class="input-group-addon mt-1 m-1" >Search By : </label>
+                      <select id="searchBy" formControlName="searchBy" class="form-control">
+                          <option value="">Select</option>
+                          <ng-container *ngFor="let itemTitle of itemTitles">
+                            <option *ngIf="itemTitle.isSearch == true"  value="{{itemTitle.key}}">{{itemTitle.value}}</option>
+                          </ng-container>                        
+                      </select>
+                      <div class="validation" *ngIf="searchBy?.invalid && (searchBy?.dirty || searchBy?.touched)">
+                          <small *ngIf="searchBy?.errors?.['required']">Search by is required.</small>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="input-group">
+                      <label for="searchTerm" class="input-group-addon mt-1 m-1">Search Key : </label>
+                      <input id="searchTerm" formControlName="searchTerm" placeholder="Search" class="form-control"/>
+                      <div class="validation" *ngIf="searchTerm?.invalid && (searchTerm?.dirty || searchTerm?.touched)">
+                          <small *ngIf="searchTerm?.errors?.['required']">Search key is required.</small>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3">
+                  <div class="form-group mt-1">
+                      <button type="submit" class="btn btn-primary" [disabled]="searchForm.invalid">Search</button>
+                      &nbsp;&nbsp;
+                      <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>
 
-                </div>
-            </div>
-        </div>    
-      </form>
+                  </div>
+              </div>
+          </div>    
+        </form>
+      </ng-container>
       <div class="table-responsive">
           <table class="table table-striped" #container>
               <thead>
                   <tr>
-                      <th scope="col" *ngFor="let itemTitle of itemTitles">
-                          <span appSort sortKey="{{itemTitle.key}}" (sorted)="sort($event)" class="tableHead">
-                            {{itemTitle?.value}}
-                          </span>
-                      </th>
+                      <ng-container *ngIf="funEnable[0].sorting == true">
+                        <th scope="col" *ngFor="let itemTitle of itemTitles">
+                            <span appSort sortKey="{{itemTitle.key}}" (sorted)="sort($event)" class="tableHead">
+                              {{itemTitle?.value}}
+                            </span>
+                        </th>
+                      </ng-container>
+                      <ng-container *ngIf="funEnable[0].sorting == false">
+                        <th scope="col" *ngFor="let itemTitle of itemTitles">
+                              <span class="tableHead">
+                                {{itemTitle?.value}}
+                              </span>
+                          </th>
+                      </ng-container>
                       <th scope="col" style="text-align:center">Actions</th>
                   </tr>
               </thead>
@@ -304,7 +324,7 @@ class DynamicListComponent {
                   </tr>
               </tbody>
           </table>
-          <div>
+          <div *ngIf="funEnable[0].pagination == true">
               <div class="pagination">
                   <span *ngIf="paginationItems.totalPages > 1">
                       <app-pagination [current]="paginationItems.currentPage" [total]="paginationItems.totalPages" (goTo)="goToPage($event)"
@@ -321,50 +341,61 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImpo
             args: [{ selector: 'lib-dynamic-list', template: `
     <div>
       <h2 class="mb-4">{{title}}</h2>
-      <form [formGroup]="searchForm" (ngSubmit)="search()">
-        <div class="row m-2">
-            <div class="col-lg-3">
-                <div class="input-group">
-                    <label for="searchBy" class="input-group-addon mt-1 m-1" >Search By : </label>
-                    <select id="searchBy" formControlName="searchBy" class="form-control">
-                        <option value="">Select</option>
-                        <ng-container *ngFor="let itemTitle of itemTitles">
-                          <option *ngIf="itemTitle.isSearch == true"  value="{{itemTitle.key}}">{{itemTitle.value}}</option>
-                        </ng-container>                        
-                    </select>
-                    <div class="validation" *ngIf="searchBy?.invalid && (searchBy?.dirty || searchBy?.touched)">
-                        <small *ngIf="searchBy?.errors?.['required']">Search by is required.</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="input-group">
-                    <label for="searchTerm" class="input-group-addon mt-1 m-1">Search Key : </label>
-                    <input id="searchTerm" formControlName="searchTerm" placeholder="Search" class="form-control"/>
-                    <div class="validation" *ngIf="searchTerm?.invalid && (searchTerm?.dirty || searchTerm?.touched)">
-                        <small *ngIf="searchTerm?.errors?.['required']">Search key is required.</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="form-group mt-1">
-                    <button type="submit" class="btn btn-primary" [disabled]="searchForm.invalid">Search</button>
-                    &nbsp;&nbsp;
-                    <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>
+      <ng-container *ngIf="funEnable[0].searching == true">
+        <form [formGroup]="searchForm" (ngSubmit)="search()">
+          <div class="row m-2">
+              <div class="col-lg-3">
+                  <div class="input-group">
+                      <label for="searchBy" class="input-group-addon mt-1 m-1" >Search By : </label>
+                      <select id="searchBy" formControlName="searchBy" class="form-control">
+                          <option value="">Select</option>
+                          <ng-container *ngFor="let itemTitle of itemTitles">
+                            <option *ngIf="itemTitle.isSearch == true"  value="{{itemTitle.key}}">{{itemTitle.value}}</option>
+                          </ng-container>                        
+                      </select>
+                      <div class="validation" *ngIf="searchBy?.invalid && (searchBy?.dirty || searchBy?.touched)">
+                          <small *ngIf="searchBy?.errors?.['required']">Search by is required.</small>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="input-group">
+                      <label for="searchTerm" class="input-group-addon mt-1 m-1">Search Key : </label>
+                      <input id="searchTerm" formControlName="searchTerm" placeholder="Search" class="form-control"/>
+                      <div class="validation" *ngIf="searchTerm?.invalid && (searchTerm?.dirty || searchTerm?.touched)">
+                          <small *ngIf="searchTerm?.errors?.['required']">Search key is required.</small>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3">
+                  <div class="form-group mt-1">
+                      <button type="submit" class="btn btn-primary" [disabled]="searchForm.invalid">Search</button>
+                      &nbsp;&nbsp;
+                      <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>
 
-                </div>
-            </div>
-        </div>    
-      </form>
+                  </div>
+              </div>
+          </div>    
+        </form>
+      </ng-container>
       <div class="table-responsive">
           <table class="table table-striped" #container>
               <thead>
                   <tr>
-                      <th scope="col" *ngFor="let itemTitle of itemTitles">
-                          <span appSort sortKey="{{itemTitle.key}}" (sorted)="sort($event)" class="tableHead">
-                            {{itemTitle?.value}}
-                          </span>
-                      </th>
+                      <ng-container *ngIf="funEnable[0].sorting == true">
+                        <th scope="col" *ngFor="let itemTitle of itemTitles">
+                            <span appSort sortKey="{{itemTitle.key}}" (sorted)="sort($event)" class="tableHead">
+                              {{itemTitle?.value}}
+                            </span>
+                        </th>
+                      </ng-container>
+                      <ng-container *ngIf="funEnable[0].sorting == false">
+                        <th scope="col" *ngFor="let itemTitle of itemTitles">
+                              <span class="tableHead">
+                                {{itemTitle?.value}}
+                              </span>
+                          </th>
+                      </ng-container>
                       <th scope="col" style="text-align:center">Actions</th>
                   </tr>
               </thead>
@@ -401,7 +432,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImpo
                   </tr>
               </tbody>
           </table>
-          <div>
+          <div *ngIf="funEnable[0].pagination == true">
               <div class="pagination">
                   <span *ngIf="paginationItems.totalPages > 1">
                       <app-pagination [current]="paginationItems.currentPage" [total]="paginationItems.totalPages" (goTo)="goToPage($event)"
@@ -421,6 +452,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImpo
             }], actionMenus: [{
                 type: Input
             }], items: [{
+                type: Input
+            }], funEnable: [{
                 type: Input
             }], onGoPage: [{
                 type: Output
